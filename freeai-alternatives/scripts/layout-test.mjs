@@ -7,6 +7,9 @@ const browser = await puppeteer.launch({
   args: ['--no-sandbox', '--disable-gpu'],
 })
 const page = await browser.newPage()
+await page.evaluateOnNewDocument(() => {
+  sessionStorage.setItem('freeai-contact-popup-seen', '1')
+})
 const results = []
 const check = (name, ok, extra = '') => {
   results.push(ok)

@@ -15,6 +15,9 @@ const browser = await puppeteer.launch({
 
 try {
   const page = await browser.newPage()
+  await page.evaluateOnNewDocument(() => {
+    sessionStorage.setItem('freeai-contact-popup-seen', '1')
+  })
   const errors = []
   page.on('console', (msg) => {
     if (msg.type() === 'error') errors.push(msg.text())

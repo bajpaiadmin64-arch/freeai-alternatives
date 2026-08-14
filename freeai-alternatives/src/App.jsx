@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import Navbar from './components/Navbar'
+import ContactPopup from './components/ContactPopup'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
 import FeaturedSection from './components/FeaturedSection'
@@ -40,6 +41,7 @@ function Home() {
   return (
     <div className="min-h-screen text-slate-900 antialiased dark:text-white">
       <Navbar />
+      <ContactPopup />
       <main>
         <Hero onSearch={handleSearch} />
 
