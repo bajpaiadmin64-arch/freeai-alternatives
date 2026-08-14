@@ -93,7 +93,7 @@ export default function ToolCard({ tool, showCompare = true }) {
         </div>
       )}
 
-      <div className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 dark:border-white/5">
+      <div className="mt-5 flex items-center gap-2 border-t border-[#ece2d3] pt-4 dark:border-white/5">
         <a
           href={tool.officialUrl}
           target="_blank"

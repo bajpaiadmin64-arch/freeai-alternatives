@@ -28,7 +28,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-slate-200/80 bg-white/95 shadow-[0_8px_30px_-14px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-night-950/95'
+          ? 'border-b border-[#e9dfd0]/80 bg-[#fdfaf5]/95 shadow-[0_8px_30px_-14px_rgba(62,48,32,0.16)] dark:border-white/10 dark:bg-night-950/95'
           : 'border-b border-transparent bg-white/75 backdrop-blur-md dark:bg-night-950/70'
       }`}
     >
@@ -50,7 +50,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="mr-1 hidden items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50/80 px-3 py-1.5 text-[11px] font-medium text-slate-500 xl:inline-flex dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
+          <span className="mr-1 hidden items-center gap-1.5 rounded-full border border-[#e6dccd] bg-[#f8f2ea]/80 px-3 py-1.5 text-[11px] font-medium text-[#8b7355] xl:inline-flex dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
             <PenLine size={11} className="text-brand-500" />
             Designed &amp; Developed by Utkarsh Bajpai
           </span>
@@ -87,7 +87,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-slate-200/80 bg-white/98 shadow-[0_20px_40px_-20px_rgba(15,23,42,0.2)] lg:hidden dark:border-white/10 dark:bg-night-900">
+        <div className="border-t border-[#e9dfd0]/80 bg-[#fdfaf5]/98 shadow-[0_20px_40px_-20px_rgba(62,48,32,0.22)] lg:hidden dark:border-white/10 dark:bg-night-900">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
             {links.map((l) => (
               <a

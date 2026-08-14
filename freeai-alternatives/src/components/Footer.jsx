@@ -4,7 +4,7 @@ import { siteConfig } from '../data/tools'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white/90 dark:border-white/10 dark:bg-night-900">
+    <footer className="border-t border-[#e9dfd0] bg-[#fdfaf5]/90 dark:border-white/10 dark:bg-night-900">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row">
           <div className="max-w-sm">
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <details className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-night-800/60">
+        <details className="mt-10 rounded-2xl border border-[#e6dccd] bg-[#f8f2ea]/80 p-5 dark:border-white/10 dark:bg-night-800/60">
           <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-slate-800 dark:text-white">
             <ShieldAlert size={16} className="text-brand-500" />
             Disclaimer

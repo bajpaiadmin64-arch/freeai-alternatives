@@ -7,7 +7,7 @@ export default function Logo({ size = 'md', showCredit = false }) {
   return (
     <span className="inline-flex items-center gap-2.5 select-none">
       <span
-        className={`${sizes[size]} tile relative inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 via-violet-500 to-cyan-400`}
+        className={`${sizes[size]} tile relative inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 via-[#a0522d] to-gold-500`}
       >
         <svg
           viewBox="0 0 48 48"

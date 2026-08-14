@@ -19,7 +19,7 @@ export default function StudentSection() {
 
   return (
     <section id="students" className="relative py-20">
-      <div className="pointer-events-none absolute right-0 top-10 h-64 w-64 rounded-full bg-violet-300/15 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-10 h-64 w-64 rounded-full bg-gold-300/15 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow justify-center">Study on a budget</p>
@@ -35,7 +35,7 @@ export default function StudentSection() {
           {useCases.map((u) => (
             <li
               key={u.label}
-              className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+              className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-[#e9dfd0] bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
             >
               <u.icon size={13} className="text-brand-500" />
               {u.label}

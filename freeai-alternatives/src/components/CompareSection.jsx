@@ -43,7 +43,7 @@ export default function CompareSection() {
           <table className="w-full min-w-[680px] border-collapse text-sm">
             <caption className="sr-only">Comparison of selected AI tools</caption>
             <thead>
-              <tr className="border-b border-slate-200 bg-slate-50/70 dark:border-white/10 dark:bg-night-700/40">
+              <tr className="border-b border-[#e9dfd0] bg-[#f6f0e6]/70 dark:border-white/10 dark:bg-night-700/40">
                 <th scope="col" className="w-44 px-4 py-4 text-left font-semibold text-slate-500 dark:text-slate-400">
                   Feature
                 </th>
@@ -62,7 +62,7 @@ export default function CompareSection() {
                         <select
                           value={tool.id}
                           onChange={(e) => replaceCompare(tool.id, e.target.value)}
-                          className="mt-1 w-full max-w-[190px] cursor-pointer rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-600 focus:outline-none dark:border-white/15 dark:bg-night-700 dark:text-slate-300"
+                          className="mt-1 w-full max-w-[190px] cursor-pointer rounded-lg border border-[#e6dccd] bg-white px-2 py-1 text-xs font-medium text-slate-600 focus:outline-none dark:border-white/15 dark:bg-night-700 dark:text-slate-300"
                           aria-label={`Change tool in column ${i + 1}`}
                         >
                           <option value={tool.id}>{tool.name}</option>
@@ -82,7 +82,7 @@ export default function CompareSection() {
               {comparisonRows.map((row, ri) => (
                 <tr
                   key={row.key}
-                  className={`border-b border-slate-100 dark:border-white/5 ${ri % 2 === 1 ? 'bg-slate-50/60 dark:bg-night-700/30' : ''}`}
+                  className={`border-b border-slate-100 dark:border-white/5 ${ri % 2 === 1 ? 'bg-[#f8f2ea]/60 dark:bg-night-700/30' : ''}`}
                 >
                   <th scope="row" className="px-4 py-3 text-left font-semibold text-slate-700 dark:text-slate-200">
                     {row.label}

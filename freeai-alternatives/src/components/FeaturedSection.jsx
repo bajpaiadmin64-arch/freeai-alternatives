@@ -9,7 +9,7 @@ export default function FeaturedSection() {
 
   return (
     <section id="featured" className="relative py-20">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[640px] -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-300/20 via-violet-300/20 to-cyan-300/20 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[640px] -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-300/20 via-gold-300/20 to-brand-400/15 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow justify-center">Editor's picks</p>
@@ -31,7 +31,7 @@ export default function FeaturedSection() {
               className="card card-hover tile-hover group relative flex flex-col p-5"
               style={{ animationDelay: `${i * 40}ms` }}
             >
-              <div className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full border border-amber-200/80 bg-amber-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-amber-700 dark:border-amber-500/25 dark:bg-amber-500/15 dark:text-amber-300">
+              <div className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full border border-gold-200/80 bg-gold-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-gold-700 dark:border-gold-500/25 dark:bg-gold-500/15 dark:text-gold-300">
                 <Crown size={11} />
                 {f.label}
               </div>
