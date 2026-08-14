@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: freeai-alternatives
+    runtime: static
+    rootDir: freeai-alternatives
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 22
