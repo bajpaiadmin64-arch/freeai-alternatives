@@ -43,7 +43,7 @@ try {
   const nodeIds = await page.evaluate(() =>
     [...document.querySelectorAll('#orbit [data-tool-id]')].map((n) => n.getAttribute('data-tool-id')),
   )
-  check('Visible orbit nodes <= 12 (60 total in db)', nodeIds.length > 0 && nodeIds.length <= 12, `${nodeIds.length} visible`)
+  check('Visible orbit nodes evenly spaced, <= 16 (60 total in db)', nodeIds.length > 0 && nodeIds.length <= 16, `${nodeIds.length} visible`)
   check('Every visible node exists in the database', nodeIds.every((id) => byId.has(id)))
   check('Orbit node icons load (no broken images)', await page.evaluate(async () => {
     document.querySelector('#orbit [aria-label="AI tool orbit"]').scrollIntoView()

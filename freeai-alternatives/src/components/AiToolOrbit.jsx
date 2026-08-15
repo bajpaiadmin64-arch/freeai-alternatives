@@ -15,7 +15,6 @@ const CATEGORY_EMOJI = {
   productivity: '📊',
 }
 
-const MAX_VISIBLE = 11
 const DRAG_FACTOR = 0.25 // degrees of rotation per px dragged
 const WHEEL_FACTOR = 0.2
 const MOVE_TOLERANCE = 6 // px — beyond this a pointer gesture counts as a drag, not a tap
@@ -27,6 +26,7 @@ export default function AiToolOrbit({ mode = 'discover' }) {
   const [selectedId, setSelectedId] = useState(null)
   const [hubOpen, setHubOpen] = useState(false)
   const [dragging, setDragging] = useState(false)
+  const [spinning, setSpinning] = useState(false)
   const [size, setSize] = useState(0)
 
   const containerRef = useRef(null)
@@ -76,6 +76,7 @@ export default function AiToolOrbit({ mode = 'discover' }) {
   const stopMomentum = () => {
     cancelAnimationFrame(rafRef.current)
     velocityRef.current = 0
+    setSpinning(false)
   }
 
   const updateAngle = (v) => {
@@ -114,14 +115,21 @@ export default function AiToolOrbit({ mode = 'discover' }) {
     const spin = () => {
       const v = velocityRef.current * 0.94
       velocityRef.current = v
-      if (Math.abs(v) < 0.15) return
+      if (Math.abs(v) < 0.15) {
+        setSpinning(false)
+        return
+      }
       updateAngle(angleRef.current + v * DRAG_FACTOR)
       rafRef.current = requestAnimationFrame(spin)
     }
-    if (Math.abs(vel) > 2) rafRef.current = requestAnimationFrame(spin)
+    if (Math.abs(vel) > 2) {
+      setSpinning(true)
+      rafRef.current = requestAnimationFrame(spin)
+    }
   }
 
   const pickCategory = (id) => {
+    stopMomentum()
     setCategory(id)
     setHubOpen(false)
     setSelectedId(null)
@@ -141,29 +149,61 @@ export default function AiToolOrbit({ mode = 'discover' }) {
   const categoryLabel = category === 'all' ? 'All Tools' : categories.find((c) => c.id === category)?.label || category
   const compareSet = new Set(compareIds.length ? compareIds : isCompare ? ['gemini', 'deepseek', 'chatgpt'] : [])
 
-  // ----- geometry -----
-  const nodeCount = Math.min(MAX_VISIBLE, N)
+  // ----- geometry: one center -> one radius -> equal angles -> equal spacing -----
+  const small = size > 0 && size < 380
+  const nodeW = small ? 60 : 80
+  const nodeTile = small ? 'h-9 w-9 rounded-lg' : 'h-11 w-11 rounded-xl'
+  const cx = size / 2
+  const cy = size / 2
+  const R = Math.max(0, size / 2 - (small ? 58 : 72))
   const step = N > 0 ? 360 / N : 360
-  const halfArc = N > MAX_VISIBLE ? (nodeCount / 2) * step : 180
-  const radius = size > 0 ? size / 2 - 82 : 0
-  const nodeTile = size < 380 ? 'h-9 w-9 rounded-lg' : 'h-11 w-11 rounded-xl'
+  const minSpacing = R > 0 ? 2 * Math.asin(Math.min(1, (nodeW + (small ? 2 : 4)) / (2 * R))) * (180 / Math.PI) : 0
 
   const nodes = []
-  if (N > 0) {
+  if (N > 0 && R > 0) {
+    // index of the tool nearest the front (bottom, 90deg)
+    let frontIndex = 0
+    let best = Infinity
     for (let k = 0; k < N; k++) {
+      const a = (k * step + angle) % 360
+      const d = Math.abs(((a - 90 + 540) % 360) - 180)
+      if (d < best) {
+        best = d
+        frontIndex = k
+      }
+    }
+    let shown = []
+    let sampled = false
+    const desired = Math.max(1, Math.ceil(minSpacing / step))
+    let div = desired
+    while (div <= N && N % div !== 0) div++
+    if (div <= N && N / div >= 4) {
+      // perfect regular polygon: every div-th tool, uniform spacing around the full circle
+      const m = N / div
+      sampled = div > 1
+      for (let j = 0; j < m; j++) shown.push(((frontIndex + j * div) % N + N) % N)
+    } else {
+      // fallback: front-anchored window with a back wedge (prime N or tiny circles)
+      sampled = true
+      const jStep = Math.max(2, desired)
+      const m = Math.min(N, Math.max(4, Math.min(small ? 9 : 11, Math.floor(N / jStep))))
+      const half = Math.floor((m - 1) / 2)
+      for (let j = -half; j <= m - 1 - half; j++) shown.push(((frontIndex + j * jStep) % N + N) % N)
+    }
+    for (const k of shown) {
       const a = ((k * step + angle) % 360 + 360) % 360
-      const dist = ((a - 90 + 540) % 360) - 180 // degrees away from the front (bottom)
-      if (Math.abs(dist) > halfArc) continue
-      const depth = (Math.sin((a * Math.PI) / 180) + 1) / 2
       const rad = (a * Math.PI) / 180
+      const dist = ((a - 90 + 540) % 360) - 180
+      const depth = (Math.sin(rad) + 1) / 2
       nodes.push({
         k,
         tool: list[k],
-        x: Math.cos(rad) * radius,
-        y: Math.sin(rad) * radius,
+        x: Math.cos(rad) * R,
+        y: Math.sin(rad) * R,
+        dist,
         depth,
         scale: 0.62 + 0.38 * depth,
-        opacity: 0.4 + 0.6 * depth,
+        opacity: (0.4 + 0.6 * depth) * (sampled ? Math.min(1, Math.max(0, (180 - Math.abs(dist)) / 60)) : 1),
       })
     }
     nodes.sort((p, q) => p.depth - q.depth)
@@ -224,8 +264,6 @@ export default function AiToolOrbit({ mode = 'discover' }) {
             const tool = n.tool
             const selected = selectedId === tool.id
             const inSet = inCompare(tool.id)
-            const left = size > 0 ? size / 2 + n.x - (size < 380 ? 34 : 40) : 0
-            const top = size > 0 ? size / 2 + n.y - (size < 380 ? 34 : 40) : 0
             return (
               <button
                 key={tool.id}
@@ -234,10 +272,12 @@ export default function AiToolOrbit({ mode = 'discover' }) {
                 data-angle={Math.round((((n.k * step + angle) % 360) + 360) % 360)}
                 aria-pressed={selected}
                 onClick={(e) => selectTool(tool.id, e)}
-                className={`absolute flex w-[68px] flex-col items-center gap-1 rounded-xl p-1 outline-none sm:w-[80px] ${dragging ? '' : 'transition-[left,top,transform,opacity] duration-300 ease-out'}`}
+                className={`absolute flex ${small ? 'h-[62px] w-[60px]' : 'h-[80px] w-[80px]'} flex-col items-center gap-1 overflow-hidden rounded-xl p-1 outline-none ${
+                  dragging || spinning ? '' : 'transition-[left,top,transform,opacity] duration-300 ease-out'
+                }`}
                 style={{
-                  left,
-                  top,
+                  left: cx + n.x,
+                  top: cy + n.y,
                   opacity: selected ? 1 : n.opacity,
                   transform: `translate(-50%,-50%) scale(${selected ? n.scale * 1.18 : n.scale})`,
                   zIndex: selected ? 60 : 10 + Math.round(n.depth * 50),
@@ -260,10 +300,10 @@ export default function AiToolOrbit({ mode = 'discover' }) {
                     </span>
                   )}
                 </span>
-                <span className="w-full truncate text-center text-[9px] font-semibold text-slate-700 sm:text-[10px] dark:text-slate-200">
+                <span className="w-full truncate text-center text-[9px] font-semibold leading-none text-slate-700 sm:text-[10px] dark:text-slate-200">
                   {tool.name.split(' ')[0]}
                 </span>
-                <span className="inline-flex max-w-full items-center gap-1 truncate text-[8px] font-medium text-slate-400 sm:text-[9px] dark:text-slate-500">
+                <span className="inline-flex max-w-full items-center gap-1 truncate text-[8px] font-medium leading-none text-slate-400 sm:text-[9px] dark:text-slate-500">
                   <span className={`h-1 w-1 shrink-0 rounded-full ${(statusStyles[tool.freeStatus] || statusStyles['Free Tier']).dot}`} />
                   <span className="truncate">{tool.freeStatus}</span>
                 </span>
