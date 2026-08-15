@@ -3,6 +3,7 @@ import { PenLine } from 'lucide-react'
 import Navbar from './components/Navbar'
 import ContactPopup from './components/ContactPopup'
 import Hero from './components/Hero'
+import WorkflowFinder from './components/WorkflowFinder'
 import Categories from './components/Categories'
 import FeaturedSection from './components/FeaturedSection'
 import AlternativeFinder from './components/AlternativeFinder'
@@ -52,6 +53,7 @@ function Home() {
       </div>
       <main>
         <Hero onSearch={handleSearch} />
+        <WorkflowFinder />
 
         <section id="search" className="mx-auto max-w-7xl px-4 sm:px-6">
           <Categories category={category} onCategoryChange={handleCategory} />
