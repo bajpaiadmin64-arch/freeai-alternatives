@@ -8,8 +8,9 @@ const links = [
   { href: '#alternatives', label: 'AI Alternatives' },
   { href: '#categories', label: 'Categories' },
   { href: '#compare', label: 'Compare' },
-  { href: '#open-source', label: 'Open Source' },
-  { href: '#about', label: 'About' },
+  { href: '#open-source',  label: 'Open Source' },
+  { href: '#utilities',    label: '🛠️ Utilities' },
+  { href: '#about',        label: 'About' },
 ]
 
 export default function Navbar() {

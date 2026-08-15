@@ -13,6 +13,7 @@ import ToolGrid from './components/ToolGrid'
 import CompareSection from './components/CompareSection'
 import StudentSection from './components/StudentSection'
 import OpenSourceSection from './components/OpenSourceSection'
+import UtilitiesSection from './components/UtilitiesSection'
 import DonationSection from './components/DonationSection'
 import AboutContact from './components/AboutContact'
 import Footer from './components/Footer'
@@ -92,6 +93,7 @@ function Home() {
         <CompareSection />
         <StudentSection />
         <OpenSourceSection />
+        <UtilitiesSection />
         <DonationSection />
         <AboutContact />
       </main>

@@ -25,6 +25,9 @@ export default function Footer() {
             <a href="#open-source" className="text-slate-300 transition-colors hover:text-white">
               Open Source
             </a>
+            <a href="#utilities" className="text-slate-300 transition-colors hover:text-white">
+              Utilities
+            </a>
             <a href="#students" className="text-slate-300 transition-colors hover:text-white">
               Students
             </a>
