@@ -13,7 +13,7 @@ function initials(name) {
 }
 
 function Logo({ tool, size = 'md' }) {
-  const sizes = { md: 'h-11 w-11 rounded-xl text-sm', lg: 'h-14 w-14 rounded-2xl text-base' }
+  const sizes = { sm: 'h-9 w-9 rounded-lg text-xs', md: 'h-11 w-11 rounded-xl text-sm', lg: 'h-14 w-14 rounded-2xl text-base' }
   const [failed, setFailed] = useState(false)
   const icon = toolIcons[tool.id]
 

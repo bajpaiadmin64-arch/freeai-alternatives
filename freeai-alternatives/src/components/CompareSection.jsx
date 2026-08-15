@@ -1,6 +1,8 @@
-import { ArrowUpRight, Check, Minus, RotateCcw } from 'lucide-react'
+import { ArrowUpRight, Check, Minus, RotateCcw, X } from 'lucide-react'
 import { comparisonRows, tools } from '../data/tools'
 import { useApp } from '../context/AppContext'
+import AiToolOrbit from './AiToolOrbit'
+import { Logo } from './ToolCard'
 
 function BoolCell({ value }) {
   if (value === true)
@@ -21,10 +23,9 @@ function BoolCell({ value }) {
 const DEFAULT_PICKS = ['gemini', 'deepseek', 'chatgpt']
 
 export default function CompareSection() {
-  const { compareIds, replaceCompare, clearCompare } = useApp()
+  const { compareIds, toggleCompare, clearCompare } = useApp()
   const picks = compareIds.length > 0 ? compareIds : DEFAULT_PICKS
   const selected = picks.map((id) => tools.find((t) => t.id === id)).filter(Boolean)
-  const options = tools.filter((t) => !picks.includes(t.id))
 
   return (
     <section id="compare" className="py-20">
@@ -35,11 +36,15 @@ export default function CompareSection() {
             Compare <span className="gradient-text">AI Tools</span>
           </h2>
           <p className="mt-3 text-slate-600 dark:text-slate-300">
-            Pick up to three tools to compare free access, features and capabilities side by side. Use the compare button on any tool card to build your own lineup.
+            Pick up to three tools to compare free access, features and capabilities side by side. Use the orbit below — or the compare button on any tool card — to build your lineup.
           </p>
         </div>
 
-        <div className="card mt-10 overflow-x-auto rounded-2xl">
+        <div className="mt-10">
+          <AiToolOrbit mode="compare" />
+        </div>
+
+        <div id="compare-table" className="card mt-10 overflow-x-auto rounded-2xl">
           <table className="w-full min-w-[680px] border-collapse text-sm">
             <caption className="sr-only">Comparison of selected AI tools</caption>
             <thead>
@@ -49,30 +54,21 @@ export default function CompareSection() {
                 </th>
                 {selected.map((tool, i) => (
                   <th key={`${tool.id}-${i}`} scope="col" className="min-w-44 px-4 py-4 text-left align-top">
-                    <div className="flex items-start gap-2">
-                      <span
-                        className="tile inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-bold text-white"
-                        style={{ background: `linear-gradient(135deg, ${tool.color}, ${tool.color}cc)` }}
-                        aria-hidden="true"
-                      >
-                        {tool.name.replace(/\(.*?\)/g, '').trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase()}
-                      </span>
+                    <div className="flex items-start gap-2.5">
+                      <Logo tool={tool} />
                       <div className="min-w-0">
                         <p className="truncate font-bold text-slate-900 dark:text-white">{tool.name}</p>
-                        <select
-                          value={tool.id}
-                          onChange={(e) => replaceCompare(tool.id, e.target.value)}
-                          className="mt-1 w-full max-w-[190px] cursor-pointer rounded-lg border border-[#e6dccd] bg-white px-2 py-1 text-xs font-medium text-slate-600 focus:outline-none dark:border-white/15 dark:bg-night-700 dark:text-slate-300"
-                          aria-label={`Change tool in column ${i + 1}`}
-                        >
-                          <option value={tool.id}>{tool.name}</option>
-                          {options.map((o) => (
-                            <option key={o.id} value={o.id}>
-                              {o.name}
-                            </option>
-                          ))}
-                        </select>
+                        <p className="truncate text-[11px] text-slate-400 dark:text-slate-500">{tool.bestFor}</p>
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => toggleCompare(tool.id)}
+                        className="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-brand-600 dark:hover:bg-white/10"
+                        aria-label={`Remove ${tool.name} from comparison`}
+                        title="Remove from comparison"
+                      >
+                        <X size={14} />
+                      </button>
                     </div>
                   </th>
                 ))}
