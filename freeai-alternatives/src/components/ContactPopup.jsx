@@ -75,7 +75,7 @@ export default function ContactPopup() {
           closing ? 'animate-pop-out' : 'animate-pop-in'
         }`}
       >
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 via-[#a0522d] to-gold-500" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 to-gold-500" />
 
         <button
           type="button"
@@ -87,7 +87,7 @@ export default function ContactPopup() {
         </button>
 
         <div className="flex flex-col items-center text-center">
-          <span className="tile inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 via-[#a0522d] to-gold-500 text-xl font-extrabold text-white">
+          <span className="tile inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-gold-500 text-xl font-extrabold text-white">
             UB
           </span>
           <p className="eyebrow mt-4">Contact</p>

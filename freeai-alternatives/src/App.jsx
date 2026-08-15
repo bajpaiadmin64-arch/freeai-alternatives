@@ -45,11 +45,11 @@ function Home() {
     <div className="min-h-screen text-slate-900 antialiased dark:text-white">
       <Navbar />
       <ContactPopup />
-      <div className="sticky top-16 z-40 border-b border-[#e9dfd0]/60 bg-[#fdfaf5]/85 backdrop-blur-md dark:border-white/5 dark:bg-night-950/75">
-        <p className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm font-semibold text-[#8b7355] dark:text-slate-300">
+      <div className="sticky top-16 z-40 border-b border-slate-200/60 bg-white/85 backdrop-blur-md dark:border-white/5 dark:bg-night-950/75">
+        <p className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm font-semibold text-slate-500 dark:text-slate-300">
           <PenLine size={14} className="shrink-0 text-brand-500" aria-hidden="true" />
           Designed &amp; Developed by{' '}
-          <span className="font-bold text-[#704214] dark:text-brand-300">Utkarsh Bajpai</span>
+          <span className="font-bold text-brand-600 dark:text-brand-300">Utkarsh Bajpai</span>
         </p>
       </div>
       <main>

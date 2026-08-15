@@ -23,7 +23,7 @@ export default function DonationSection() {
       width: 220,
       margin: 2,
       errorCorrectionLevel: 'M',
-      color: { dark: '#3c332b', light: '#ffffff' },
+      color: { dark: '#0f172a', light: '#ffffff' },
     }).catch(() => {})
   }, [])
 
@@ -32,7 +32,7 @@ export default function DonationSection() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="card rounded-3xl p-8 sm:p-12">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="tile inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#fbcee8] to-[#efa9c6] text-[#704214]">
+            <span className="tile inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-gold-200 text-brand-700">
               <Heart size={22} />
             </span>
             <h2 className="mt-4 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
@@ -46,14 +46,14 @@ export default function DonationSection() {
 
           <div className="mt-10 flex flex-col items-center gap-10 sm:flex-row sm:items-start sm:justify-center">
             <div className="flex flex-col items-center">
-              <div className="rounded-2xl border border-[#e9dfd0] bg-white p-3 shadow-soft dark:border-white/10">
+              <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-soft dark:border-white/10">
                 <canvas ref={canvasRef} className="block h-[220px] w-[220px]" aria-label="UPI payment QR code" role="img" />
               </div>
               <p className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">
                 <QrCode size={13} />
                 Scan with any UPI app
               </p>
-              <p className="mt-1 rounded-full border border-[#e6dccd] bg-[#f8f2ea] px-3.5 py-1 text-sm font-bold tracking-wide text-[#5a3410] dark:border-white/10 dark:bg-white/5 dark:text-white">
+              <p className="mt-1 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1 text-sm font-bold tracking-wide text-brand-700 dark:border-white/10 dark:bg-white/5 dark:text-white">
                 {UPI_ID}
               </p>
             </div>

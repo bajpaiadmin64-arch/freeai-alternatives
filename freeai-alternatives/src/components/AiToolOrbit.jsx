@@ -258,7 +258,14 @@ export default function AiToolOrbit({ mode = 'discover' }) {
           style={{ touchAction: 'none' }}
         >
           {/* soft glow behind the ring */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-brand-300/20 via-gold-300/10 to-brand-400/15 blur-2xl" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-brand-300/25 via-gold-300/10 to-cyan-400/15 blur-2xl" />
+
+          {/* subtle orbit ring line */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 rounded-full border border-slate-200/70 dark:border-white/10"
+            style={{ width: R * 2, height: R * 2, transform: 'translate(-50%, -50%)' }}
+          />
 
           {size > 0 && nodes.map((n) => {
             const tool = n.tool
@@ -287,9 +294,9 @@ export default function AiToolOrbit({ mode = 'discover' }) {
                 <span
                   className={`relative ${nodeTile} tile inline-flex shrink-0 items-center justify-center bg-white p-1 ring-1 ring-slate-900/5 ${
                     selected
-                      ? 'ring-2 ring-brand-500 shadow-[0_10px_24px_-6px_rgba(183,65,14,0.55)]'
+                      ? 'ring-2 ring-brand-500 shadow-[0_10px_24px_-6px_rgba(99,102,241,0.55)]'
                       : inSet
-                        ? 'ring-2 ring-gold-400 shadow-[0_8px_20px_-8px_rgba(173,148,64,0.6)]'
+                        ? 'ring-2 ring-gold-400 shadow-[0_8px_20px_-8px_rgba(139,92,246,0.6)]'
                         : ''
                   }`}
                 >
@@ -317,11 +324,11 @@ export default function AiToolOrbit({ mode = 'discover' }) {
               type="button"
               onClick={() => setHubOpen((o) => !o)}
               aria-expanded={hubOpen}
-              className="tile group relative flex h-24 w-24 flex-col items-center justify-center gap-0.5 rounded-full border border-gold-300/60 bg-gradient-to-br from-brand-500 via-[#a0522d] to-gold-500 text-white shadow-[0_14px_34px_-10px_rgba(183,65,14,0.55)] transition-transform duration-300 hover:scale-105 sm:h-32 sm:w-32"
+              className="tile group relative flex h-24 w-24 flex-col items-center justify-center gap-0.5 rounded-full border border-brand-300 bg-white text-brand-600 shadow-[0_14px_34px_-10px_rgba(99,102,241,0.35)] transition-transform duration-300 hover:scale-105 hover:border-brand-500 sm:h-32 sm:w-32"
             >
               <span className="text-xl sm:text-2xl" aria-hidden="true">✨</span>
               <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] sm:text-xs">AI Tools</span>
-              <span className="text-[8px] font-medium text-white/80 sm:text-[9px]">{categoryLabel}</span>
+              <span className="text-[8px] font-medium text-slate-500 sm:text-[9px]">{categoryLabel}</span>
             </button>
 
             {hubOpen && (
@@ -346,7 +353,7 @@ export default function AiToolOrbit({ mode = 'discover' }) {
                       className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm font-semibold transition-colors ${
                         category === c.id
                           ? 'bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300'
-                          : 'text-slate-700 hover:bg-[#f6f0e8] dark:text-slate-200 dark:hover:bg-white/5'
+                          : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/5'
                       }`}
                     >
                       <span aria-hidden="true">{CATEGORY_EMOJI[c.id]}</span>

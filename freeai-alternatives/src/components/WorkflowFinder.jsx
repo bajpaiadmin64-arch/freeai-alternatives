@@ -133,7 +133,7 @@ export default function WorkflowFinder() {
             rows={2}
             placeholder="I want to research a college assignment, summarize PDFs, and create a presentation."
             aria-label="Describe what you want to accomplish"
-            className="w-full resize-none rounded-xl border border-[#e4dacb] bg-white/70 px-4 py-3.5 text-[15px] text-slate-800 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:placeholder:text-slate-500"
+            className="w-full resize-none rounded-xl border border-slate-200 bg-white/70 px-4 py-3.5 text-[15px] text-slate-800 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:placeholder:text-slate-500"
           />
           <button
             type="button"
@@ -168,7 +168,7 @@ export default function WorkflowFinder() {
                 {current.emoji}
               </span>
               <p className="text-base font-semibold text-slate-800 dark:text-slate-100">{current.text}</p>
-              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-[#e4dacb] dark:bg-white/10">
+              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-slate-200 dark:bg-white/10">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-brand-500 to-gold-400 transition-all duration-700 ease-out"
                   style={{ width: `${((Math.min(stage, 2) + 1) / 3) * 100}%` }}
@@ -186,7 +186,7 @@ export default function WorkflowFinder() {
                 <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">&ldquo;{result.query}&rdquo;</p>
               </div>
 
-              <div className="relative overflow-hidden rounded-2xl border-2 border-gold-400/70 bg-gradient-to-br from-gold-50 via-[#fdfaf5] to-brand-50 p-5 sm:p-6 dark:from-gold-500/10 dark:via-night-900 dark:to-brand-500/10">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-gold-400/70 bg-gradient-to-br from-gold-50 via-white to-brand-50 p-5 sm:p-6 dark:from-gold-500/10 dark:via-night-900 dark:to-brand-500/10">
                 <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full border border-gold-300 bg-gold-100/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-gold-700 dark:border-gold-500/30 dark:bg-gold-500/20 dark:text-gold-300">
                   <Trophy size={12} />
                   Best match for you
@@ -216,7 +216,7 @@ export default function WorkflowFinder() {
                   <li key={`${step.key}-${step.tool.id}`}>
                     <div className="card card-hover tile-hover flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
                       <div className="flex items-center gap-3 sm:w-56 sm:shrink-0">
-                        <span className="tile flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 via-[#a0522d] to-gold-500 text-sm font-extrabold text-white shadow-tile">
+                        <span className="tile flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-gold-500 text-sm font-extrabold text-white shadow-tile">
                           {i + 1}
                         </span>
                         <div className="min-w-0">
@@ -229,7 +229,7 @@ export default function WorkflowFinder() {
                           </h4>
                         </div>
                       </div>
-                      <div className="hidden h-10 w-px shrink-0 bg-[#e4dacb] sm:block dark:bg-white/10" />
+                      <div className="hidden h-10 w-px shrink-0 bg-slate-200 sm:block dark:bg-white/10" />
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2.5">
                           <Logo tool={step.tool} />
@@ -272,7 +272,7 @@ export default function WorkflowFinder() {
                     </div>
                     {i < result.steps.length - 1 && (
                       <div className="flex justify-center py-2" aria-hidden="true">
-                        <span className="tile flex h-7 w-7 items-center justify-center rounded-full bg-[#fbf7f0] text-slate-400 ring-1 ring-[#e9dfd0] dark:bg-night-800 dark:text-slate-500 dark:ring-white/10">
+                        <span className="tile flex h-7 w-7 items-center justify-center rounded-full bg-white text-slate-400 ring-1 ring-slate-200 dark:bg-night-800 dark:text-slate-500 dark:ring-white/10">
                           <ArrowDown size={13} />
                         </span>
                       </div>

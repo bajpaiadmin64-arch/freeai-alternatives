@@ -48,7 +48,7 @@ export default function CompareSection() {
           <table className="w-full min-w-[680px] border-collapse text-sm">
             <caption className="sr-only">Comparison of selected AI tools</caption>
             <thead>
-              <tr className="border-b border-[#e9dfd0] bg-[#f6f0e6]/70 dark:border-white/10 dark:bg-night-700/40">
+              <tr className="border-b border-slate-200 bg-slate-50/70 dark:border-white/10 dark:bg-night-700/40">
                 <th scope="col" className="w-44 px-4 py-4 text-left font-semibold text-slate-500 dark:text-slate-400">
                   Feature
                 </th>
@@ -78,7 +78,7 @@ export default function CompareSection() {
               {comparisonRows.map((row, ri) => (
                 <tr
                   key={row.key}
-                  className={`border-b border-slate-100 dark:border-white/5 ${ri % 2 === 1 ? 'bg-[#f8f2ea]/60 dark:bg-night-700/30' : ''}`}
+                  className={`border-b border-slate-100 dark:border-white/5 ${ri % 2 === 1 ? 'bg-slate-50/60 dark:bg-night-700/30' : ''}`}
                 >
                   <th scope="row" className="px-4 py-3 text-left font-semibold text-slate-700 dark:text-slate-200">
                     {row.label}

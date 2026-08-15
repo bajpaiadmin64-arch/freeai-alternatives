@@ -35,7 +35,7 @@ export default function StudentSection() {
           {useCases.map((u) => (
             <li
               key={u.label}
-              className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-[#e9dfd0] bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+              className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
             >
               <u.icon size={13} className="text-brand-500" />
               {u.label}

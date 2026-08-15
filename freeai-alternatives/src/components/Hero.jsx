@@ -37,7 +37,7 @@ export default function Hero({ onSearch }) {
       </div>
 
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <p className="animate-fade-up mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-[#e9dfd0]/90 bg-[#fdfaf5]/90 px-4 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+        <p className="animate-fade-up mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
           Free directory · Official links only · No account needed to browse
         </p>
@@ -95,7 +95,7 @@ export default function Hero({ onSearch }) {
         </div>
 
         <dl
-          className="animate-fade-up mx-auto mt-12 grid max-w-xl grid-cols-3 divide-x divide-[#e9dfd0] rounded-2xl border border-[#e9dfd0]/80 bg-[#fdfaf5]/80 py-4 shadow-soft dark:divide-white/10 dark:border-white/10 dark:bg-white/5"
+          className="animate-fade-up mx-auto mt-12 grid max-w-xl grid-cols-3 divide-x divide-slate-200 rounded-2xl border border-slate-200 bg-white/80 py-4 shadow-soft dark:divide-white/10 dark:border-white/10 dark:bg-white/5"
           style={{ animationDelay: '400ms' }}
         >
           <div className="px-2 text-center">
