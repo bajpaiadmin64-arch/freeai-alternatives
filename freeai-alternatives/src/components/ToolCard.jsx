@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowUpRight, CheckSquare, ChevronDown, ExternalLink, Info, Square } from 'lucide-react'
 import { statusStyles } from '../data/tools'
+import { toolIcons } from '../data/icons'
 import { useApp } from '../context/AppContext'
 
 function initials(name) {
@@ -13,6 +14,26 @@ function initials(name) {
 
 function Logo({ tool, size = 'md' }) {
   const sizes = { md: 'h-11 w-11 rounded-xl text-sm', lg: 'h-14 w-14 rounded-2xl text-base' }
+  const [failed, setFailed] = useState(false)
+  const icon = toolIcons[tool.id]
+
+  if (icon && !failed) {
+    return (
+      <span
+        className={`${sizes[size]} tile inline-flex shrink-0 items-center justify-center bg-white p-1.5 ring-1 ring-slate-900/5`}
+        aria-hidden="true"
+      >
+        <img
+          src={icon}
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-contain"
+          onError={() => setFailed(true)}
+        />
+      </span>
+    )
+  }
+
   return (
     <span
       className={`${sizes[size]} tile inline-flex shrink-0 items-center justify-center font-bold text-white dark:brightness-125`}
