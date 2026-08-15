@@ -61,6 +61,22 @@ try {
   check('No card shows a broken icon after scrolling', data.brokenCount === 0, data.brokenNames)
   check('No failed network requests for local icons', !broken.some((u) => u.includes('/icons/')), broken.filter((u) => u.includes('/icons/')).join(', '))
 
+  const floating = await page.evaluate(() => {
+    const home = document.querySelector('#home')
+    if (!home) return { ok: false, reason: 'no #home' }
+    const chips = [...home.querySelectorAll('span.tile')].filter((t) => t.querySelector('img'))
+    const loaded = chips.every((t) => t.querySelector('img').naturalWidth > 0)
+    const srcs = chips.map((t) => t.querySelector('img').getAttribute('src'))
+    const hasGemini = srcs.some((s) => s.includes('gemini'))
+    const hasDeepseek = srcs.some((s) => s.includes('deepseek'))
+    return {
+      ok: chips.length === 2 && loaded && hasGemini && hasDeepseek,
+      count: chips.length,
+      srcs,
+    }
+  })
+  check('Floating chips: exactly 2, official Gemini + DeepSeek icons, loaded', floating.ok, floating.srcs.join(', '))
+
   const featured = await page.evaluate(() => {
     const f = document.querySelector('#featured')
     if (!f) return { ok: false, count: -1 }

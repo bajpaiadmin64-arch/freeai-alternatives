@@ -10,8 +10,8 @@ export default function Hero({ onSearch }) {
 
       <div className="pointer-events-none absolute left-[8%] top-1/2 hidden -translate-y-1/2 lg:block">
         <div className="animate-float-slow card flex items-center gap-3 rounded-2xl px-4 py-3 shadow-hero-card">
-          <span className="tile h-9 w-9 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-[11px] font-bold text-white">
-            DS
+          <span className="tile h-9 w-9 shrink-0 rounded-lg bg-white p-1 ring-1 ring-slate-900/5" aria-hidden="true">
+            <img src="/icons/deepseek.svg" alt="" loading="lazy" className="h-full w-full object-contain" />
           </span>
           <div>
             <p className="text-xs font-bold text-slate-900 dark:text-white">DeepSeek</p>
@@ -24,8 +24,8 @@ export default function Hero({ onSearch }) {
 
       <div className="pointer-events-none absolute right-[7%] top-1/3 hidden -translate-y-1/2 lg:block">
         <div className="animate-float-slower card flex items-center gap-3 rounded-2xl px-4 py-3 shadow-hero-card">
-          <span className="tile h-9 w-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-800 text-[11px] font-bold text-white">
-            GM
+          <span className="tile h-9 w-9 shrink-0 rounded-lg bg-white p-1 ring-1 ring-slate-900/5" aria-hidden="true">
+            <img src="/icons/gemini.png" alt="" loading="lazy" className="h-full w-full object-contain" />
           </span>
           <div>
             <p className="text-xs font-bold text-slate-900 dark:text-white">Gemini</p>
