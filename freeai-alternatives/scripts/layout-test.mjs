@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer-core'
+import { tools } from '../src/data/tools.js'
 
 const BASE = 'http://localhost:4173'
 const browser = await puppeteer.launch({
@@ -76,7 +77,7 @@ await page.evaluate(() => {
   btn?.click()
 })
 await new Promise((r) => setTimeout(r, 300))
-const detailsShown = await page.evaluate(() => document.body.textContent.includes('Last checked: 2026-08-13'))
+const detailsShown = await page.evaluate((date) => document.body.textContent.includes(`Last checked: ${date}`), tools[0].lastChecked)
 check('Card Details expands with last-checked date', detailsShown)
 
 await browser.close()

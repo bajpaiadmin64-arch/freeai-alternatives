@@ -69,7 +69,7 @@ function Home() {
         <section id="alternatives" className="scroll-mt-20 py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow justify-center">All 60 tools</p>
+              <p className="eyebrow justify-center">All {tools.length} tools</p>
               <h2 className="section-title mt-3">
                 Popular AI <span className="gradient-text">Alternatives</span>
               </h2>

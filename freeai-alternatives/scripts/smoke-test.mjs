@@ -66,7 +66,7 @@ try {
   await new Promise((r) => setTimeout(r, 300))
   await page.evaluate(() => {
     const btns = [...document.querySelectorAll('#categories button')]
-    const target = btns.find((b) => b.textContent.trim() === 'Coding')
+    const target = btns.find((b) => b.textContent.includes('Coding'))
     target?.click()
   })
   await new Promise((r) => setTimeout(r, 500))

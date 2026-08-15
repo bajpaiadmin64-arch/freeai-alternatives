@@ -1,5 +1,5 @@
-import { Clapperboard, Code2, GitFork, Image as ImageIcon, LayoutGrid, MessageSquare, PenLine, Telescope, Zap } from 'lucide-react'
-import { categories } from '../data/tools'
+import { Clapperboard, Code2, GitFork, Image as ImageIcon, LayoutGrid, MessageSquare, Mic, PenLine, Telescope, Workflow, Zap } from 'lucide-react'
+import { categories, tools } from '../data/tools'
 
 const iconMap = {
   LayoutGrid,
@@ -10,10 +10,18 @@ const iconMap = {
   ImageIcon,
   Clapperboard,
   Zap,
+  Mic,
+  Workflow,
 }
 
 export default function Categories({ category, onCategoryChange }) {
   const chips = [...categories, { id: 'opensource', label: 'Open Source', icon: 'GitFork' }]
+
+  const countFor = (c) => {
+    if (c.id === 'all') return tools.length
+    if (c.id === 'opensource') return tools.filter((t) => t.openSource).length
+    return tools.filter((t) => t.category === c.id).length
+  }
 
   return (
     <section id="categories" className="py-10">
@@ -32,6 +40,9 @@ export default function Categories({ category, onCategoryChange }) {
             >
               <Icon size={15} />
               {c.label}
+              <span className={`text-[11px] font-semibold ${active ? 'text-white/80' : 'text-slate-400 dark:text-slate-500'}`}>
+                · {countFor(c)}
+              </span>
             </button>
           )
         })}

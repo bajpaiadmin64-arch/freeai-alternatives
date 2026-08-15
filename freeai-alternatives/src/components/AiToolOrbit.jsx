@@ -13,6 +13,8 @@ const CATEGORY_EMOJI = {
   image: '🎨',
   video: '🎬',
   productivity: '📊',
+  audio: '🎙️',
+  automation: '⚡',
 }
 
 const DRAG_FACTOR = 0.25 // degrees of rotation per px dragged
@@ -177,26 +179,36 @@ export default function AiToolOrbit({ mode = 'discover' }) {
     const desired = Math.max(1, Math.ceil(minSpacing / step))
     let div = desired
     while (div <= N && N % div !== 0) div++
-    if (div <= N && N / div >= 4) {
+    if (div <= N && N / div >= 8) {
       // perfect regular polygon: every div-th tool, uniform spacing around the full circle
       const m = N / div
       sampled = div > 1
       for (let j = 0; j < m; j++) shown.push(((frontIndex + j * div) % N + N) % N)
     } else {
-      // fallback: front-anchored window with a back wedge (prime N or tiny circles)
+      // uniform-angle fallback: m equally spaced slots, one tool per slot
       sampled = true
-      const jStep = Math.max(2, desired)
-      const m = Math.min(N, Math.max(4, Math.min(small ? 9 : 11, Math.floor(N / jStep))))
-      const half = Math.floor((m - 1) / 2)
-      for (let j = -half; j <= m - 1 - half; j++) shown.push(((frontIndex + j * jStep) % N + N) % N)
+      const m = Math.min(N, Math.max(3, Math.min(16, Math.floor(360 / Math.max(1, minSpacing)))))
+      const slotStep = 360 / m
+      const jMid = (m - 1) / 2
+      const used = new Set()
+      for (let j = 0; j < m; j++) {
+        const offset = Math.round(((j - jMid) * slotStep) / step)
+        let k = (((frontIndex + offset) % N) + N) % N
+        while (used.has(k)) k = (k + 1) % N
+        used.add(k)
+        shown.push({ k, posAngle: ((frontIndex * step + (j - jMid) * slotStep) % 360 + 360) % 360 })
+      }
     }
-    for (const k of shown) {
-      const a = ((k * step + angle) % 360 + 360) % 360
+    for (const entry of shown) {
+      const k = typeof entry === 'object' ? entry.k : entry
+      const posAngle = typeof entry === 'object' ? entry.posAngle : (k * step) % 360
+      const a = ((posAngle + angle) % 360 + 360) % 360
       const rad = (a * Math.PI) / 180
       const dist = ((a - 90 + 540) % 360) - 180
       const depth = (Math.sin(rad) + 1) / 2
       nodes.push({
         k,
+        posAngle,
         tool: list[k],
         x: Math.cos(rad) * R,
         y: Math.sin(rad) * R,
@@ -276,7 +288,7 @@ export default function AiToolOrbit({ mode = 'discover' }) {
                 key={tool.id}
                 type="button"
                 data-tool-id={tool.id}
-                data-angle={Math.round((((n.k * step + angle) % 360) + 360) % 360)}
+                data-angle={Math.round((((n.posAngle + angle) % 360) + 360) % 360)}
                 aria-pressed={selected}
                 onClick={(e) => selectTool(tool.id, e)}
                 className={`absolute flex ${small ? 'h-[62px] w-[60px]' : 'h-[80px] w-[80px]'} flex-col items-center gap-1 overflow-hidden rounded-xl p-1 outline-none ${

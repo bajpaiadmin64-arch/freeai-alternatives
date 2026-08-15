@@ -48,7 +48,7 @@ try {
     }
   })
 
-  // --- desktop: all tools (60) ---
+  // --- desktop: all tools ---
   let m = await measure()
 
   const hubOffset = Math.hypot(m.hubCx - m.cx, m.hubCy - m.cy)
@@ -109,7 +109,7 @@ try {
   const hubOffset2 = Math.hypot(m.hubCx - m.cx, m.hubCy - m.cy)
   check('Center button still exactly centered after rotation', hubOffset2 <= 0.5, `${round(hubOffset2)}px`)
 
-  // --- category: image (8 tools, full circle 45deg) ---
+  // --- category: image (11 tools, full circle 32.7deg) ---
   await page.evaluate(() => {
     const s = document.getElementById('orbit')
     ;[...s.querySelectorAll('[data-no-drag] button')].find((b) => b.textContent.includes('AI Tools')).click()
@@ -121,13 +121,13 @@ try {
   })
   await new Promise((r) => setTimeout(r, 600))
   m = await measure()
-  check('Image category (8 tools) centered', Math.hypot(m.hubCx - m.cx, m.hubCy - m.cy) <= 0.5)
+  check('Image category (11 tools) centered', Math.hypot(m.hubCx - m.cx, m.hubCy - m.cy) <= 0.5)
   const gapsI = m.nodes.map((n) => {
     let a = (Math.atan2(n.y - m.cy, n.x - m.cx) * 180) / Math.PI + 90
     return ((a % 360) + 360) % 360
   }).sort((a, b) => a - b)
   const gapsISp = gapsI.slice(1).map((a, i) => a - gapsI[i]).concat([gapsI[0] + 360 - gapsI[gapsI.length - 1]])
-  check('Image category: 8 tools at exactly 45deg', m.nodes.length === 8 && Math.max(...gapsISp) - Math.min(...gapsISp) <= 0.5, `${round(gapsISp[0])}deg`)
+  check('Image category: 11 tools at exactly 32.7deg', m.nodes.length === 11 && Math.max(...gapsISp) - Math.min(...gapsISp) <= 0.5, `${round(gapsISp[0])}deg`)
   const radiiI = m.nodes.map((n) => Math.hypot(n.x - m.cx, n.y - m.cy))
   check('Image category: same radius', Math.max(...radiiI) - Math.min(...radiiI) <= 0.5)
 

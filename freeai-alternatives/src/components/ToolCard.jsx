@@ -55,13 +55,13 @@ export default function ToolCard({ tool, showCompare = true }) {
   const status = statusStyles[tool.freeStatus] || statusStyles['Free Tier']
 
   const categoriesText = useMemo(() => {
-    const map = { chat: 'Chat', coding: 'Coding', research: 'Research', writing: 'Writing', image: 'Image', video: 'Video', productivity: 'Productivity' }
+    const map = { chat: 'Chat', coding: 'Coding', research: 'Research', writing: 'Writing', image: 'Image', video: 'Video', productivity: 'Productivity', audio: 'Audio', automation: 'Automation' }
     return map[tool.category] || tool.category
   }, [tool.category])
 
   return (
-    <article className="card card-hover tile-hover group relative flex flex-col p-5">
-      <div className="flex items-start gap-3.5">
+    <article className="card card-hover tile-hover group relative flex flex-col p-4">
+      <div className="flex items-start gap-3">
         <Logo tool={tool} />
         <div className="min-w-0 flex-1">
           <h3 className="truncate text-base font-bold text-slate-900 dark:text-white">{tool.name}</h3>
@@ -73,11 +73,11 @@ export default function ToolCard({ tool, showCompare = true }) {
         </span>
       </div>
 
-      <p className="mt-3.5 line-clamp-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+      <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
         {tool.description}
       </p>
 
-      <dl className="mt-4 space-y-1.5 text-xs">
+      <dl className="mt-3 space-y-1.5 text-xs">
         <div className="flex justify-between gap-2">
           <dt className="text-slate-500 dark:text-slate-400">Best For</dt>
           <dd className="font-semibold text-slate-800 dark:text-slate-100">{tool.bestFor}</dd>
@@ -95,7 +95,7 @@ export default function ToolCard({ tool, showCompare = true }) {
       </dl>
 
       {expanded && (
-        <div className="mt-4 rounded-xl border border-brand-100 bg-brand-50/60 p-4 text-xs dark:border-white/10 dark:bg-night-700/50">
+        <div className="mt-3 rounded-xl border border-brand-100 bg-brand-50/60 p-3.5 text-xs dark:border-white/10 dark:bg-night-700/50">
           <p className="font-semibold text-slate-800 dark:text-slate-100">Key features</p>
           <ul className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1.5">
             {tool.features.slice(0, 6).map((f) => (
@@ -114,7 +114,7 @@ export default function ToolCard({ tool, showCompare = true }) {
         </div>
       )}
 
-      <div className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 dark:border-white/5">
+      <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 dark:border-white/5">
         <a
           href={tool.officialUrl}
           target="_blank"

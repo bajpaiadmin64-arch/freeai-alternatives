@@ -10,7 +10,7 @@ for (const t of tools) {
   if (!/^https:\/\//.test(t.officialUrl)) err(`${t.id}: url not https`)
   if (!t.name || !t.company || !t.description) err(`${t.id}: missing basic fields`)
   if (!t.bestFor || !t.limitations || !t.freeStatus) err(`${t.id}: missing status fields`)
-  if (!['chat','coding','research','writing','image','video','productivity'].includes(t.category)) err(`${t.id}: bad category ${t.category}`)
+  if (!['chat','coding','research','writing','image','video','productivity','audio','automation'].includes(t.category)) err(`${t.id}: bad category ${t.category}`)
   if (!['Completely Free','Free Tier','Free with Limits','Limited Free','Free Account Required','Open Source'].includes(t.freeStatus)) err(`${t.id}: bad freeStatus ${t.freeStatus}`)
   if (typeof t.lastChecked !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(t.lastChecked)) err(`${t.id}: bad lastChecked`)
   for (const k of ['webSearch','coding','reasoning','imageGen','fileUpload','longContext','apiAvailable','openSource','accountRequired']) {

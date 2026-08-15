@@ -100,17 +100,11 @@ export default function Hero({ onSearch }) {
         >
           <div className="px-2 text-center">
             <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Tools listed</dt>
-            <dd className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">
-              {tools.length}
-              <span className="text-sm text-slate-500 dark:text-slate-400">+</span>
-            </dd>
+            <dd className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">{tools.length}</dd>
           </div>
           <div className="px-2 text-center">
             <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Categories</dt>
-            <dd className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">
-              {categories.length}
-              <span className="text-sm text-slate-500 dark:text-slate-400">+</span>
-            </dd>
+            <dd className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">{categories.length}</dd>
           </div>
           <div className="px-2 text-center">
             <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Official links</dt>
