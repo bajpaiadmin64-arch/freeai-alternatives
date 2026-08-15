@@ -1,4 +1,4 @@
-export default function Logo({ size = 'md' }) {
+export default function Logo({ size = 'md', light = false }) {
   const sizes = {
     sm: 'h-7 w-7 rounded-lg',
     md: 'h-9 w-9 rounded-xl',
@@ -7,7 +7,7 @@ export default function Logo({ size = 'md' }) {
   return (
     <span className="inline-flex items-center gap-2.5 select-none">
       <span
-        className={`${sizes[size]} tile relative inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-gold-500`}
+        className={`${sizes[size]} tile relative inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700`}
       >
         <svg
           viewBox="0 0 48 48"
@@ -16,25 +16,18 @@ export default function Logo({ size = 'md' }) {
           className="h-[62%] w-[62%]"
           aria-hidden="true"
         >
-          <circle cx="13" cy="30" r="4" fill="#fff" />
-          <circle cx="35" cy="30" r="4" fill="#fff" />
-          <circle cx="24" cy="13" r="4" fill="#fff" />
-          <path
-            d="M13 30H35M24 17V26"
-            stroke="#fff"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-          <path
-            d="M37.5 3.5c.7 2.6 2.1 4 4.7 4.7-2.6.7-4 2.1-4.7 4.7-.7-2.6-2.1-4-4.7-4.7 2.6-.7 4-2.1 4.7-4.7Z"
-            fill="#fff"
-          />
+          <circle cx="24" cy="24" r="14.5" stroke="#82BAC4" strokeWidth="2.5" />
+          <circle cx="24" cy="24" r="6" fill="#fff" />
+          <circle cx="34.2" cy="13.8" r="3.4" fill="#E07A5F" />
+          <circle cx="13.8" cy="13.8" r="3.4" fill="#fff" />
+          <circle cx="13.8" cy="34.2" r="3.4" fill="#fff" />
+          <circle cx="34.2" cy="34.2" r="3.4" fill="#fff" />
         </svg>
       </span>
       <span className="flex flex-col">
-        <span className="text-lg font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">
+        <span className={`text-lg font-extrabold leading-tight tracking-tight ${light ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
           FreeAI
-          <span className="gradient-text"> Alternatives</span>
+          <span className={light ? 'text-[#b5dbe3]' : 'gradient-text'}> Alternatives</span>
         </span>
       </span>
     </span>

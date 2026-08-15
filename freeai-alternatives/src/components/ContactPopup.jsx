@@ -94,7 +94,7 @@ export default function ContactPopup() {
           <h3 className="mt-1 text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {CONTACT.name}
           </h3>
-          <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">
+          <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">
             {CONTACT.role}
           </p>
         </div>

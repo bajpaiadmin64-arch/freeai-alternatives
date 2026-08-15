@@ -243,7 +243,7 @@ export default function WorkflowFinder() {
                           {step.tool.description}
                         </p>
                         <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                          <span className="font-semibold text-brand-600 dark:text-brand-300">Why: </span>
+                          <span className="font-semibold text-brand-600 dark:text-brand-200">Why: </span>
                           {step.why}
                         </p>
                         {step.alternative && (
@@ -253,7 +253,7 @@ export default function WorkflowFinder() {
                               href={step.alternative.officialUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="font-semibold text-brand-600 underline decoration-brand-300 underline-offset-2 hover:text-brand-700 dark:text-brand-300"
+                              className="font-semibold text-brand-600 underline decoration-brand-300 underline-offset-2 hover:text-brand-700 dark:text-brand-200"
                             >
                               {step.alternative.name}
                             </a>

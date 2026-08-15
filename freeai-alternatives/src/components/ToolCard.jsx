@@ -139,7 +139,7 @@ export default function ToolCard({ tool, showCompare = true }) {
             onClick={() => toggleCompare(tool.id)}
             disabled={compareFull}
             className={`btn btn-soft btn-icon py-2.5 disabled:cursor-not-allowed disabled:opacity-40 ${
-              inCompare ? 'border-brand-300 bg-brand-50 text-brand-700 dark:border-brand-500/50 dark:bg-brand-500/10 dark:text-brand-300' : ''
+              inCompare ? 'border-brand-300 bg-brand-50 text-brand-700 dark:border-brand-500/50 dark:bg-brand-500/10 dark:text-brand-200' : ''
             }`}
             title={compareFull ? 'Compare is full (max 3 tools)' : inCompare ? 'Remove from compare' : 'Add to compare'}
             aria-pressed={inCompare}

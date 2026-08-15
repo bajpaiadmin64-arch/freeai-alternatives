@@ -23,7 +23,7 @@ export default function DonationSection() {
       width: 220,
       margin: 2,
       errorCorrectionLevel: 'M',
-      color: { dark: '#0f172a', light: '#ffffff' },
+      color: { dark: '#213234', light: '#ffffff' },
     }).catch(() => {})
   }, [])
 
