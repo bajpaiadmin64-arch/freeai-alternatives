@@ -1631,6 +1631,6 @@ export const comparisonRows = [
 export const siteConfig = {
   name: 'FreeAI Alternatives',
   tagline: 'Powerful AI doesn’t always have to be expensive.',
-  footerNote: '© 2026 FreeAI Alternatives — Designed & Developed by Utkarsh Bajpai',
+  footerNote: '© 2026 FreeAI Alternatives',
   dataUpdatedOn: LAST_CHECKED,
 }

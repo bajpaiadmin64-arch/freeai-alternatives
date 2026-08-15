@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { PenLine } from 'lucide-react'
 import Navbar from './components/Navbar'
 import ContactPopup from './components/ContactPopup'
 import Hero from './components/Hero'
@@ -42,6 +43,13 @@ function Home() {
     <div className="min-h-screen text-slate-900 antialiased dark:text-white">
       <Navbar />
       <ContactPopup />
+      <div className="sticky top-16 z-40 border-b border-[#e9dfd0]/60 bg-[#fdfaf5]/85 backdrop-blur-md dark:border-white/5 dark:bg-night-950/75">
+        <p className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm font-semibold text-[#8b7355] dark:text-slate-300">
+          <PenLine size={14} className="shrink-0 text-brand-500" aria-hidden="true" />
+          Designed &amp; Developed by{' '}
+          <span className="font-bold text-[#704214] dark:text-brand-300">Utkarsh Bajpai</span>
+        </p>
+      </div>
       <main>
         <Hero onSearch={handleSearch} />
 

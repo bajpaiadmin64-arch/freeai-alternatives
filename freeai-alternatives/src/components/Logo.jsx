@@ -1,4 +1,4 @@
-export default function Logo({ size = 'md', showCredit = false }) {
+export default function Logo({ size = 'md' }) {
   const sizes = {
     sm: 'h-7 w-7 rounded-lg',
     md: 'h-9 w-9 rounded-xl',
@@ -36,11 +36,6 @@ export default function Logo({ size = 'md', showCredit = false }) {
           FreeAI
           <span className="gradient-text"> Alternatives</span>
         </span>
-        {showCredit && (
-          <span className="hidden text-[10px] font-medium leading-tight tracking-wide text-slate-400 sm:block dark:text-slate-500">
-            Designed &amp; Developed by Utkarsh Bajpai
-          </span>
-        )}
       </span>
     </span>
   )
