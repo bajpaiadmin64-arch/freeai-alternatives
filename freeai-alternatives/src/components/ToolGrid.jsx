@@ -148,7 +148,7 @@ export default function ToolGrid({
           <p className="mx-auto mt-1 max-w-md text-sm text-slate-500 dark:text-slate-400">{emptyMessage}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="perspective-container grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" style={{ transformStyle: 'preserve-3d' }}>
           {filtered.map((tool) => (
             <ToolCard key={tool.id} tool={tool} showCompare={showCompare} />
           ))}

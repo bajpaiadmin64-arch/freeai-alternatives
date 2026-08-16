@@ -4,12 +4,22 @@ import { categories, tools } from '../data/tools'
 export default function Hero({ onSearch }) {
   return (
     <section id="home" className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[860px] -translate-x-1/2 rounded-full bg-gradient-to-br from-brand-300/25 via-gold-300/20 to-brand-400/15 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-32 h-72 w-72 rounded-full bg-gold-300/15 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 top-40 h-72 w-72 rounded-full bg-brand-400/15 blur-3xl" />
+      {/* Layered atmospheric depth — large ambient orbs */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[1000px] -translate-x-1/2 rounded-full bg-gradient-to-br from-brand-300/20 via-gold-300/15 to-brand-400/10 blur-[80px] animate-hero-glow" />
+      <div className="pointer-events-none absolute -bottom-28 -left-40 h-80 w-80 rounded-full bg-gold-300/12 blur-[60px]" />
+      <div className="pointer-events-none absolute -right-36 top-36 h-80 w-80 rounded-full bg-brand-400/12 blur-[60px]" />
 
-      <div className="pointer-events-none absolute left-[8%] top-1/2 hidden -translate-y-1/2 lg:block">
-        <div className="animate-float-slow card flex items-center gap-3 rounded-2xl px-4 py-3 shadow-hero-card">
+      {/* Floating DeepSeek card — 3D layered */}
+      <div className="pointer-events-none absolute left-[8%] top-1/2 hidden -translate-y-1/2 lg:block" style={{ perspective: '600px' }}>
+        <div
+          className="animate-float-slow flex items-center gap-3 rounded-2xl px-4 py-3 backdrop-blur-md border border-white/50"
+          style={{
+            background: 'rgba(255, 255, 255, 0.75)',
+            boxShadow: '0 4px 8px rgb(33 50 52 / 0.06), 0 12px 24px -8px rgb(0 96 120 / 0.1), 0 24px 48px -16px rgb(0 96 120 / 0.08), inset 0 1px 0 rgba(255,255,255,0.8)',
+            transformStyle: 'preserve-3d',
+            transform: 'translateZ(10px) rotateX(2deg)',
+          }}
+        >
           <span className="tile h-9 w-9 shrink-0 rounded-lg bg-white p-1 ring-1 ring-slate-900/5" aria-hidden="true">
             <img src="/icons/deepseek.svg" alt="" loading="lazy" className="h-full w-full object-contain" />
           </span>
@@ -22,8 +32,17 @@ export default function Hero({ onSearch }) {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute right-[7%] top-1/3 hidden -translate-y-1/2 lg:block">
-        <div className="animate-float-slower card flex items-center gap-3 rounded-2xl px-4 py-3 shadow-hero-card">
+      {/* Floating Gemini card — 3D layered */}
+      <div className="pointer-events-none absolute right-[7%] top-1/3 hidden -translate-y-1/2 lg:block" style={{ perspective: '600px' }}>
+        <div
+          className="animate-float-slower flex items-center gap-3 rounded-2xl px-4 py-3 backdrop-blur-md border border-white/50"
+          style={{
+            background: 'rgba(255, 255, 255, 0.75)',
+            boxShadow: '0 4px 8px rgb(33 50 52 / 0.06), 0 12px 24px -8px rgb(0 96 120 / 0.1), 0 24px 48px -16px rgb(0 96 120 / 0.08), inset 0 1px 0 rgba(255,255,255,0.8)',
+            transformStyle: 'preserve-3d',
+            transform: 'translateZ(10px) rotateX(-2deg)',
+          }}
+        >
           <span className="tile h-9 w-9 shrink-0 rounded-lg bg-white p-1 ring-1 ring-slate-900/5" aria-hidden="true">
             <img src="/icons/gemini.png" alt="" loading="lazy" className="h-full w-full object-contain" />
           </span>
@@ -36,8 +55,9 @@ export default function Hero({ onSearch }) {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <p className="animate-fade-up mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-1.5 text-xs font-semibold text-slate-600 shadow-soft dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+      {/* Hero content — layered depth */}
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6" style={{ perspective: '800px' }}>
+        <p className="animate-fade-up mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300" style={{ boxShadow: '0 2px 8px rgb(33 50 52 / 0.06), inset 0 1px 0 rgba(255,255,255,0.6)' }}>
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
           Free directory · Official links only · No account needed to browse
         </p>
@@ -94,9 +114,13 @@ export default function Hero({ onSearch }) {
           </a>
         </div>
 
+        {/* Stats bar — glassmorphic with depth */}
         <dl
-          className="animate-fade-up mx-auto mt-12 grid max-w-xl grid-cols-3 divide-x divide-slate-200 rounded-2xl border border-slate-200 bg-white/80 py-4 shadow-soft dark:divide-white/10 dark:border-white/10 dark:bg-white/5"
-          style={{ animationDelay: '400ms' }}
+          className="animate-fade-up mx-auto mt-12 grid max-w-xl grid-cols-3 divide-x divide-slate-200/60 rounded-2xl border border-white/60 bg-white/70 backdrop-blur-md py-4 dark:divide-white/10 dark:border-white/8 dark:bg-white/5"
+          style={{
+            animationDelay: '400ms',
+            boxShadow: '0 4px 12px rgb(33 50 52 / 0.06), 0 16px 32px -12px rgb(0 96 120 / 0.08), inset 0 1px 0 rgba(255,255,255,0.6)',
+          }}
         >
           <div className="px-2 text-center">
             <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Tools listed</dt>
